@@ -9,34 +9,30 @@ db = SQLAlchemy(app)
 class Product(db.Model):
     Sno = db.Column(db.Integer, primary_key=True)
     product = db.Column(db.String(200), nullable=False)
-    
-    def _repr_(self) -> str:
-        return f"{self.Sno} - {self.product}"
+    desc = db.Column(db.String(200), nullable=True)
+    rate = db.Column(db.Integer, nullable=True)
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/", methods=['GET', 'POST'])
 def home():
-    if request.method == "POST":
-        product_name = request.form['product']
-        new_product = Product(product=product_name)
+    if request.method == 'POST':
+        product = request.form['product']
+        new_product = Product(product=product)
         db.session.add(new_product)
         db.session.commit()
-
-    allProduct = Product.query.all()
-    return render_template("index.html", allProduct=allProduct)
+    
+    all_products = Product.query.all()
+    return render_template("index.html", all_products=all_products)
 
 @app.route("/search")
 def search():
-    query = request.args.get('query', '')
+    query = request.args.get("query")
     if query:
-        allProduct = Product.query.filter(Product.product.ilike(f"%{query}%")).all()
+        results = Product.query.filter(Product.product.ilike(f"%{query}%")).all()
     else:
-        allProduct = []
-    return render_template("index.html", allProduct=allProduct)
-
+        results = []
+    return render_template("search.html", search_results=results, query=query)
 
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
-        
-        print("✔ Database created successfully")
     app.run(debug=True)
