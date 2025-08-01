@@ -1,131 +1,66 @@
-{% extends 'base.html' %} {% block title %} Home {% endblock title %} {% block body %}
+{% extends 'base.html' %}
+{% block title %}Home | Vanshika Traders{% endblock title %}
+{% block body %}
 
-  <div class="container-fluid mx-3">
-    <h1>MyProducts</h1><form action="/search" method="GET" class="mb-4">
-  <div class="input-group">
-    <input type="text" class="form-control" name="query" placeholder="Search Product..." required>
-    <button class="btn btn-outline-secondary" type="submit">Search</button>
-  </div>
-</form>
-
-<form action="/" method="POST">
-  <div class="mb-3">
-    <label for="product" class="form-label">Product Name</label>
-    <input type="text" class="form-control" name="product" id="product" required>
-  </div>
-  <button type="submit" class="btn btn-dark">Submit</button>
-</form>
-
-<div class="container my-3">
-  <table class="table">
-    <thead>
-    <tr>
-      <th scope="col">Sno</th>
-      <th scope="col">product name</th>
-      <th scope="col">Product varity</th>
-      <th scope="col">rate</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <h1>Hamare yaha har mal uchit rate pr milta hai</h1>
-    <tr>
-      <th scope="row">1</th>
-      <td>Dona</td>
-      <td>Silver</td>
-      <td>2200 </td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Glass</td>
-      <td>Flora</td>
-      <td>5500</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Pattal</td>
-      <td>Silver</td>
-      <td>2500</td>
-    </tr>
-    <tr>
-      <th scope="row">4</th>
-      <td>pattal</td>
-      <td>gutka</td>
-      <td>2400</td>
-    </tr>
-    <tr>
-      <th scope="row">5</th>
-      <td>chamach</td>
-      <td>silver</td>
-      <td>1500</td>
-    </tr>
-    <tr>
-      <th scope="row">6</th>
-      <td>dona</td>
-      <td>heavy</td>
-      <td>2700</td>
-    </tr>
-    <tr>
-      <th scope="row">7</th>
-      <td>dona</td>
-      <td>khakhi</td>
-      <td>2200</td>
-    </tr>
-    <tr>
-      <th scope="row">8</th>
-      <td>pattal</td>
-      <td>gsl</td>
-      <td>2000</td>
-    </tr>
-  </tbody>
-</table>
-<h2>All items</h2>
-
-  </div>
-</div><nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand fw-bold" href="#">Vanshika Traders</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-        aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button><div class="collapse navbar-collapse" id="navbarSupportedContent">
-  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-    <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="/">Home</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
-    </li>
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-          aria-expanded="false">
-        Dropdown
-      </a>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Action</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-      </ul>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-    </li>
-  </ul>
-  <form class="d-flex" role="search">
-    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-    <button class="btn btn-outline-success" type="submit">Search</button>
-  </form>
-
-  <!-- Aapka naam yaha show hoga -->
-  <span class="navbar-text ms-auto fw-bold text-primary">
-      Developed by Vansh Gupta
-  </span>
+<!-- Hero Banner -->
+<div class="container-fluid bg-dark text-white text-center py-5">
+    <h1 class="display-4">Vanshika Traders</h1>
+    <p class="lead">Eco-Friendly Paper Products Delivered With Trust</p>
 </div>
 
-  </div>
-</nav>
-<p>This is a simple Flask template with Bootstrap.</p><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-    crossorigin="anonymous"></script>{% endblock body %}
+<!-- Product Search -->
+<div class="container my-4">
+    <form action="/search" method="GET" class="mb-4">
+        <div class="input-group">
+            <input type="text" class="form-control" name="query" placeholder="Search Product..." required>
+            <button class="btn btn-outline-secondary" type="submit">Search</button>
+        </div>
+    </form>
+</div>
+
+<!-- Product Form -->
+<div class="container">
+    <form action="/" method="POST" class="mb-5">
+        <div class="mb-3">
+            <label for="product" class="form-label">Product Name</label>
+            <input type="text" class="form-control" name="product" id="product" required>
+        </div>
+        <button type="submit" class="btn btn-success">Add Product</button>
+    </form>
+</div>
+
+<!-- Product Table -->
+<div class="container mb-5">
+    <h2 class="mb-3">Available Products</h2>
+    <p class="text-muted">Hamare yaha har maal uchit rate pr milta hai</p>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">S.No</th>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Product Variety</th>
+                    <th scope="col">Rate (₹)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><th scope="row">1</th><td>Dona</td><td>Silver</td><td>2200</td></tr>
+                <tr><th scope="row">2</th><td>Glass</td><td>Flora</td><td>5500</td></tr>
+                <tr><th scope="row">3</th><td>Pattal</td><td>Silver</td><td>2500</td></tr>
+                <tr><th scope="row">4</th><td>Pattal</td><td>Gutka</td><td>2400</td></tr>
+                <tr><th scope="row">5</th><td>Chamach</td><td>Silver</td><td>1500</td></tr>
+                <tr><th scope="row">6</th><td>Dona</td><td>Heavy</td><td>2700</td></tr>
+                <tr><th scope="row">7</th><td>Dona</td><td>Khakhi</td><td>2200</td></tr>
+                <tr><th scope="row">8</th><td>Pattal</td><td>GSL</td><td>2000</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-3">
+    <p class="mb-1">© 2025 Vanshika Traders | Made by <strong>Vansh Gupta</strong></p>
+    <p class="mb-0">📞 Contact: <a href="tel:+918982339315" class="text-white">+91 89823 39315</a> | 📧 Email: <a href="mailto:Vanshgupta6839@gmail.com" class="text-white">Vanshgupta6839@gmail.com</a></p>
+</footer>
+
+{% endblock body %}
