@@ -1,10 +1,25 @@
-{% extends 'base.html' %}
-{% block title %} Search Results {% endblock %}
-{% block body %}
-<h2>Search Results:</h2>
-<ul>
-  {% for result in results %}
-    <li>{{ result.product }} - {{ result.rate }}</li>
-  {% endfor %}
-</ul>
-{% endblock %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+</head>
+<body>
+    <h2>Search Results for "{{ query }}":</h2>
+
+    {% if search_results %}
+        <ul>
+            {% for item in search_results %}
+                <li>
+                    <strong>Product:</strong> {{ item.product }} <br>
+                    <strong>Varity:</strong> {{ item.varity }} <br>
+                    <strong>Description:</strong> {{ item.desc }} <br>
+                    <strong>Rate:</strong> ₹{{ item.rate }}
+                </li>
+                <hr>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No matching products found.</p>
+    {% endif %}
+</body>
+</html>
